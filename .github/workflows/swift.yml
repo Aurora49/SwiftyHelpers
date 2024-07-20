@@ -16,7 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Build
+      uses: fwal/setup-swift@v1
+      with:
+        swift-version: '5.10.0'
       run: swift build -v
     - name: Run tests
       run: swift test -v
