@@ -27,8 +27,8 @@ final class String_isValidEmailUnitTests: XCTestCase {
             
             _ = try emailTest.isValidEmail()
         } catch let errorReceived {
-            if let error = errorReceived as? TextfieldsError {
-                XCTAssert((error == TextfieldsError.invalidEmailFormat))
+            if let error = errorReceived as? StringFormatErrors {
+                XCTAssert((error == StringFormatErrors.invalidEmailFormat))
             }
         }
     }

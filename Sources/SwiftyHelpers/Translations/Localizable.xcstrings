@@ -1,7 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "textfield.error.te001" : {
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "string.error.format.invalidEmailFormat" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -12,37 +15,13 @@
         }
       }
     },
-    "textfield.error.te002" : {
+    "string.error.format.invalidPhoneNumberFormat" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Invalid phone number format!"
-          }
-        }
-      }
-    },
-    "textfield.error.title.te001" : {
-      "comment" : "Title for an error when the email doesn't follow the correct format.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid email !"
-          }
-        }
-      }
-    },
-    "textfield.error.title.te002" : {
-      "comment" : "Title for an error when the phone number doesn't follow the correct format.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid phone number!"
           }
         }
       }
