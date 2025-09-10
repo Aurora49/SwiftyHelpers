@@ -5,31 +5,28 @@
 //  Created by Sliman Desmars on 05/07/2024.
 //
 
-import XCTest
+import Foundation
+import Testing
 
 @testable import SwiftyHelpers
 
-final class String_isValidEmailUnitTests: XCTestCase {
-
-    func testEmailWithACorrectFormat() {
+@Suite("Email validator unit tests")
+struct StringIsValidEmailTests {
+    
+    @Test("A correct email with the right format.")
+    func emailWithCorrectFormat() throws {
+        let correctEmailFormat: String = "name@domain.com"
         
-        do {
-            let emailTest: String = "name@domain.com"
-            _ = try emailTest.isValidEmail()
-            
-        } catch { XCTFail("It's a valid format an error should not be received !") }
+        _ = try correctEmailFormat.isValidEmail()
     }
+    
+    @Test("Email with an incorrect format.")
+    func emailWithIncorrectFormat() throws {
+        let invalidEmailFormat: String = "name@dom;ain.com"
         
-    func testEmailWithAnInCorrectFormat() {
-
-        do {
-            let emailTest: String = "name@dom;ain.com"
-            
-            _ = try emailTest.isValidEmail()
-        } catch let errorReceived {
-            if let error = errorReceived as? StringFormatErrors {
-                XCTAssert((error == StringFormatErrors.invalidEmailFormat))
-            }
+        let error = #expect(throws: StringFormatErrors.invalidEmailFormat.self){
+            _ = try invalidEmailFormat.isValidEmail()
         }
+        #expect(error == .invalidEmailFormat)
     }
 }

@@ -61,7 +61,7 @@ struct KeychainTests {
             
             if let result: Data =  try Keychain.fetch(for: keyA){
                 #expect(result == dataUpdated)
-                try? Keychain.remove(for: keyA, service: service)
+                try Keychain.remove(for: keyA, service: service)
             }
             else {
                 let error: OSStatus = errSecItemNotFound

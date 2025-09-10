@@ -5,17 +5,28 @@
 //  Created by Sliman Desmars on 07/07/2024.
 //
 
-import XCTest
+import Foundation
+import Testing
 
-final class String_isValidPhoneNumberUnitTests: XCTestCase {
+@testable import SwiftyHelpers
 
-    /// Test to check regex used to verify email and phone number format.
-    func testPhoneNumberWithCorrectFormat() {
+@Suite("Phone number validator unit tests")
+struct StringIsValidPhoneNumberUnitTests {
+
+    @Test("A correct phone number with the right format.")
+    func phoneNumberWithCorrectFormat() throws {
+        let correctPhoneNumber: String  = "+33760071779"
         
-        do {
-            let correctPhoneNumber: String  = "+33760071779"
-            _ = try correctPhoneNumber.isValidPhoneNumber()
-            
-        } catch _ { XCTFail("It's a valid format an error should not be received !") }
+        _ = try correctPhoneNumber.isValidPhoneNumber()
+    }
+
+    @Test("Phone number with an incorrect format.")
+    func phoneNumberWithIncorrectFormat() throws {
+        let invalidPhoneNumberFormat: String = "+3#3760071779"
+        
+        let error = #expect(throws: StringFormatErrors.invalidPhoneNumberFormat.self){
+            _ = try invalidPhoneNumberFormat.isValidPhoneNumber()
+        }
+        #expect(error == .invalidPhoneNumberFormat)
     }
 }
