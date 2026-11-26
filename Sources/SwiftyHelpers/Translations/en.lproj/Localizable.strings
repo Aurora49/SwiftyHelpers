@@ -1,0 +1,5 @@
+/* StringFormatErrors.invalidEmailFormat */
+"string.error.format.invalidEmailFormat" = "Invalid email format!";
+
+/* StringFormatErrors.invalidPhoneNumberFormat */
+"string.error.format.invalidPhoneNumberFormat" = "Invalid phone number format!";

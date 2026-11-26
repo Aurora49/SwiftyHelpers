@@ -17,10 +17,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # xcodebuild, not `swift test`: the runner's SwiftPM CLI copies Localizable.xcstrings
-      # without compiling it, so translations are not found at runtime.
       - name: Build and test (macOS)
-        run: xcodebuild test -scheme SwiftyHelpers -destination 'platform=macOS' -skipPackagePluginValidation
+        run: swift test
 
   ios:
     runs-on: macos-latest

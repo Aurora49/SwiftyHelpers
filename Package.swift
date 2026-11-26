@@ -29,7 +29,7 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "SwiftyHelpers",
-            // Declared explicitly: some toolchains don't pick up .xcstrings automatically, and then no Bundle.module.
+            // The <language>.lproj/Localizable.strings files, available through Bundle.module.
             resources: [.process("Translations")],
             plugins: [swiftLint]),
         .testTarget(
