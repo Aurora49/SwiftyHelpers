@@ -1,47 +1,51 @@
 //
-//  File.swift
-//  
+//  StringFormatErrors.swift
+//  SwiftyHelpers
 //
 //  Created by Sliman Desmars on 28/06/2024.
 //
 
 import Foundation
 
-/// Enum to manage all errors related to the planning page
-public enum StringFormatErrors: Error {
-    
-    // @MARK: Errors
+/// Errors thrown by the string format validations.
+public enum StringFormatErrors: LocalizedError {
+
+    // MARK: - Errors
     case invalidEmailFormat
-    
+
     case invalidPhoneNumberFormat
-    
-    // @MARK: Errors description
+
+    // MARK: - Errors description
     /// Error translated.
-    var errorDescriptionTranslated: String {
+    public var errorDescriptionTranslated: String {
 
         switch self {
-            case .invalidEmailFormat: return "string.error.format.invalidEmailFormat".translate()
-            case .invalidPhoneNumberFormat: return "string.error.format.invalidPhoneNumberFormat".translate()
+        case .invalidEmailFormat: return "string.error.format.invalidEmailFormat".translate()
+        case .invalidPhoneNumberFormat: return "string.error.format.invalidPhoneNumberFormat".translate()
         }
     }
-    
-    // @MARK: Errors description
+
+    // MARK: - Errors description
     /// Untranslated error (if user wants to use own translation)
-    var errorDescriptionNotTranslated: String {
+    public var errorDescriptionNotTranslated: String {
 
         switch self {
-            case .invalidEmailFormat: return "string.error.format.invalidEmailFormat"
-            case .invalidPhoneNumberFormat: return "string.error.format.invalidPhoneNumberFormat"
+        case .invalidEmailFormat: return "string.error.format.invalidEmailFormat"
+        case .invalidPhoneNumberFormat: return "string.error.format.invalidPhoneNumberFormat"
         }
     }
-    
-    // @MARK: Errors Code
+
+    // MARK: - Errors Code
     /// Receive code in accordance with the error.
-    var errorCode: String {
-        
+    public var errorCode: String {
+
         switch self {
-            case .invalidEmailFormat: return "SFE001"
-            case .invalidPhoneNumberFormat: return "SFE002"
+        case .invalidEmailFormat: return "SFE001"
+        case .invalidPhoneNumberFormat: return "SFE002"
         }
     }
+
+    // MARK: - LocalizedError
+    /// Translated description, used by `localizedDescription`.
+    public var errorDescription: String? { errorDescriptionTranslated }
 }
