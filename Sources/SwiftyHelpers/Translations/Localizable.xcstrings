@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "string.error.format.invalidEmailFormat" : {
       "extractionState" : "manual",
       "localizations" : {

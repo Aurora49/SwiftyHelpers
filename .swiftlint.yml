@@ -1,0 +1,29 @@
+# Any warning fails the build, same as an error.
+# NOTE: 0 is unusable here — this SwiftLint version's threshold check fires
+# unconditionally at 0, even with zero real violations. 1 is the effective
+# "fail on any warning" setting.
+warning_threshold: 1
+
+opt_in_rules:
+  - empty_count
+  - closure_spacing
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - fatal_error_message
+
+line_length:
+  warning: 120
+  error: 160
+
+type_body_length:
+  warning: 300
+  error: 400
+
+file_length:
+  warning: 500
+  error: 700
+
+identifier_name:
+  min_length:
+    warning: 2

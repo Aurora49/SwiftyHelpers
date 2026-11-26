@@ -1,4 +1,4 @@
-# This workflow will build a Swift project
+# This workflow builds and tests the package on macOS and iOS.
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
 
 name: Swift
@@ -10,18 +10,26 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  macos:
     runs-on: macos-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Swift
-        uses: swift-actions/setup-swift@v1
-        with:
-          swift-version: '5.9'
+      - name: Build and test (macOS)
+        run: swift test
 
-      - name: Build and test
-        run: swift build && swift test
+  ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and test (iOS Simulator)
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices available -j \
+            | jq -r '[.devices | to_entries[] | select(.key | contains("iOS")) | .value[] | select(.name | startswith("iPhone"))][0].udid')
+          # -skipPackagePluginValidation: trust the SwiftLint plugin without the Xcode prompt.
+          xcodebuild test -scheme SwiftyHelpers -destination "id=$DEVICE_ID" -skipPackagePluginValidation
