@@ -74,7 +74,9 @@ Use `errorDescriptionNotTranslated` to get the translation key and provide your 
 The package is linted by [SwiftLint](https://github.com/realm/SwiftLint) on every build, with the rules in `.swiftlint.yml`: **any warning fails the build**.
 
 - In Xcode, the first build asks to **Trust & Enable** the SwiftLint plugin.
-- On the command line, `swift build` / `swift test` work as is; with `xcodebuild`, add `-skipPackagePluginValidation`.
+- On the command line, use `xcodebuild` with `-skipPackagePluginValidation`, as the CI does:
+  `xcodebuild test -scheme SwiftyHelpers -destination 'platform=macOS' -skipPackagePluginValidation`.
+  Some `swift test` toolchains copy `Localizable.xcstrings` without compiling it, and the translation tests then fail.
 
 ## License
 
